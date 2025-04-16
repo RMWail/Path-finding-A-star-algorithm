@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link href="firstStyle.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="father">
+      <div class="child">
+        <img src="images/AI.png">
+      </div>
+      <input type="number" id="rows" placeholder="number of rows">
+      <input type="number" id="cols" placeholder="number of cols">
+      <button id="btn" onclick="go()">Confirm</button>
+    </div>
+    <script> 
+      function check(row,col){
+        if(row>0 && col>0 && row<=12 && col <=12 && row==col)
+        return 1;
+      else 
+      return 0;
+      }
+
+      function go() {
+        let x = document.getElementById('rows');
+      let y = document.getElementById('cols');
+      let row = x.value;
+      let col = y.value;
+        if(check(row,col)==1){
+          window.alert("Passed values accepted");
+       // Encode values and append them as query parameters
+       let queryString = `?row=${encodeURIComponent(row)}&col=${encodeURIComponent(col)}`;
+          
+          // Construct the new URL with query parameters
+          let newUrl = `mainPage.html${queryString}`;
+          
+          // Navigate to the new URL
+          window.location.href = newUrl;
+        }
+        else {
+          window.alert("values not accepted , rows and columns number must be the same with maximum value = 12 for example rows=8,columns=8");
+        }
+      }
+      
+    </script>
+  </body>
+</html>
